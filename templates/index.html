@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Car Price Prediction</title>
+</head>
+
+<body>
+    <div style="color:blue">
+        <h3 style="color: white; background-color: black; padding: 10px;" class="text-center">
+            <i>Car Price Prediction</i>
+        </h3>
+        <div class="container-fluid my-4">
+            <form action="{{ url_for('predict')}}" method="post">
+                <div class="row my-4 mx-2">
+                    <div class="col-sm-6">
+                        <div class="card m-2">
+                            <div class="card-body m-2">
+                                <label for="first">Car Manufactured Year ?</label>
+                                <input type="number" class="form-control" id="first" name="Year"
+                                    placeholder="Enter Car Purchased Year" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card m-2">
+                            <div class="card-body m-2">
+                                <label for="second">Car Present Price ?</label>
+                                <small id="price_info" class="form-text text-muted mx-2">
+                                    Enter Price in Lakhs (upto 2 decimal places).
+                                </small>
+                                <input type="integer" class="form-control" step="any" id="second" name="Present_Price"
+                                    placeholder="Enter Purchased Price" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-4 mx-2">
+                    <div class="col-sm-6">
+                        <div class="card m-2">
+                            <div class="card-body m-2">
+                                <label for="third">Kilometers Driven ?</label>
+                                <input type="number" class="form-control" id="third" name="Kms_Driven"
+                                    placeholder="Enter Number of Kilometers Driven" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card m-2">
+                            <div class="card-body m-2">
+                                <label for="fourth">How many owners previously had the car ?</label>
+                                <small id="owner_info" class="form-text text-muted mx-2">Choose 0 or 1 or 3</small>
+                                <input type="number" class="form-control" id="fourth" min="0" max="3" name="Owner"
+                                    placeholder="Enter the Number of of Car Owners" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-4 mx-2">
+                    <div class="col-sm-6">
+                        <div class="card m-2">
+                            <div class="card-body m-2">
+                                <h3 style="font-size: 14px; color: #0000FF;">What Is the Fuel type?</h3>
+                                <select class="form-select" aria-label="Default select example" name="Fuel_Type_Petrol"
+                                    id="fuel" required="required">
+                                    <option selected value="Petrol">Petrol</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="CNG">CNG</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card m-2">
+                            <div class="card-body m-2">
+                                <h3 style="font-size: 14px; color: #0000FF;">Are you A Dealer or Individual ?</h3>
+                                <select class="form-select" aria-label="Default select example"
+                                    name="Seller_Type_Individual" id="resea" required="required">
+                                    <option selected value="Dealer">Dealer</option>
+                                    <option value="Individual">Individual</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-4 mx-2">
+                    <div class="col-sm-6">
+                        <div class="card m-2">
+                            <div class="card-body m-2">
+                                <h3 style="font-size: 14px; color: #0000FF;">Car Transmission Type ?</h3>
+                                <select class="form-select" aria-label="Default select example"
+                                    name="Transmission_Mannual" id="research" required="required">
+                                    <option selected value="Mannual">Manual Car</option>
+                                    <option value="Automatic">Automatic Car</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center my-2">
+                        <button type="submit" id="sub" class="btn btn-success mx-2">Calculate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <h3 style="color: white; background-color: black; padding: 10px;" class="text-center">
+            <i>{{prediction_text }}</i>
+        </h3>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
